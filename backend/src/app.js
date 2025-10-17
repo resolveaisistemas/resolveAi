@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-async function inicianrSequelize(params) {
+async function inicianrSequelize() {
   try {
     const database = await createDatabase();
 
