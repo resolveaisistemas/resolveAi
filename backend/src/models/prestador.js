@@ -55,4 +55,10 @@ percentualCobrado: {
     defaultValue: 'Ativo',
   },
 
+}), {
+  tableName: 'Prestador',
+  timestamps: false
 });
+
+module.exports = Prestador;
+
