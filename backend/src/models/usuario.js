@@ -5,19 +5,19 @@ const Usuario = database.define('Usuario', {
   
   idUsuario: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
 
   // Não precisa criar idCliente e idPrestador, a associação belongsTo (foreignKey) faz isso automaticamente
 
   login: {
-    type: DataTypes.STRING(255),
+    type: DataTypes.STRING(24),
     allowNull: false
   },
 
   senha: {
-    type: DataTypes.STRING(255),
+    type: DataTypes.STRING(60),
     allowNull: false
   },
 
