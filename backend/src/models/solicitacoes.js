@@ -1,74 +1,46 @@
-const Sequelize = require('sequelize');
-const database = require('cd ../config/db.js');
+const { Sequelize, DataTypes } = require('sequelize');
+const database = require('../config/db.js');
 
-const solicitacoes = database.define('Solicitacoes', {
+const Solicitacoes = database.define('Solicitacoes', {
+	idSolicitacoes: {
+    	type: DataTypes.INTEGER,
+    	primaryKey: true,
+    	autoIncrement: true
+	},
+	// idCliente, idTipoSorvico e idEndereco são criados automaticamente com a associação
+	descricaoProblema: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	dataSolicitacao: {
+		type: DataTypes.DATE,
+		defaultValue: DataTypes.NOW // Pega a data automaticamente, é possível usar Sequelize.NOW se tiver importado 'Sequelize'
+	}
+}, {
+	tableName: 'Solicitacoes',
+	timestamps: false
+});
 
-idSolicitacoes: {
-	type: Sequelize.INTEGER
-
-},
-
-IdCliente: {
-	type: Sequelize.INTEGER
-},
-
-idtiposServicos: {
-	type: Sequelize.INTEGER
-
-},
-
-idEndereco: {
-	type: Sequelize.INTEGER
-},
-
- descricaoProblema: {
-
-      type: DataTypes.TEXT,       
-
-},
-
-  datacadastro: {
-    type:
-    defaultValue: 
-
-  },
-
- status: {
-    type:
-    allowNull: 
-
-},
-
- idCliente: {
-    type: 
-    references: {
-      model: '',
-      key: ''
-    },
-    onUpdate: ''
-    onDelete: ''
-  },
-
-idtiposServicos: {
-    type: 
-    references: {
-      model: '',
-      key: ''
-    },
-    onUpdate: '',
-    onDelete: ''
-  },
-
-
-idEndereco: {
-    type: 
-    references: {
-      model: '',
-      key: ''
-    },
-    onUpdate: '',
-    onDelete: ''
-  },
-
-
-
+Solicitacoes.associate = (models) => {
+  Usuario.belongsTo(models.Cliente, {
+    foreignKey: 'idCliente',
+    targetKey: 'idCliente',
+    as: 'cliente'
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
+  });
+  Usuario.belongsTo(models.TipoServico, {
+    foreignKey: 'idTipoServico',
+    targetKey: 'idTipoSorvico',
+    as: 'prestador'
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
+  });
+  Usuario.belongsTo(models.idEndereco, {
+    foreignKey: 'idEndereco',
+    targetKey: 'idEndereco',
+    as: 'prestador'
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
+  });
+}
