@@ -1,0 +1,75 @@
+const Sequelize = require('sequelize');
+const database = require('cd ../config/db.js');
+
+const solicitacoes = database.define('Solicitacoes', {
+
+idSolicitacoes: {
+	type: Sequelize.INTEGER
+
+},
+
+IdCliente: {
+	type: Sequelize.INTEGER
+},
+
+idtiposServicos: {
+	type: Sequelize.INTEGER
+
+},
+
+idEndereco: {
+	type: Sequelize.INTEGER
+},
+
+ descricaoProblema: {
+
+      type: DataTypes.TEXT,       
+
+},
+
+  datacadastro: {
+    type:
+    defaultValue: 
+
+  },
+
+ status: {
+    type:
+    allowNull: 
+
+},
+
+ idCliente: {
+    type: 
+    references: {
+      model: '',
+      key: ''
+    },
+    onUpdate: ''
+    onDelete: ''
+  },
+
+idtiposServicos: {
+    type: 
+    references: {
+      model: '',
+      key: ''
+    },
+    onUpdate: '',
+    onDelete: ''
+  },
+
+
+idEndereco: {
+    type: 
+    references: {
+      model: '',
+      key: ''
+    },
+    onUpdate: '',
+    onDelete: ''
+  },
+
+
+
+
