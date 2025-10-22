@@ -35,9 +35,6 @@ const Usuario = database.define('Usuario', {
 // Para criar as chaves estrangeiras é necessário criar a associação entre as tabelas
 // isso é feito usando o modelo.belongsTo ou modelo.hasOne (no outro arquivo).
 
-// Não entendi porque o foreignKey está dentro de modelo.Cliente e não modelo.Usuario
-// mas aparentemente essa é a forma correta de criar o relacionamento.
-
 Usuario.associate = (models) => {
   Usuario.belongsTo(models.Cliente, {
     foreignKey: 'idCliente',
