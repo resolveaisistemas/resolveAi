@@ -1,59 +1,54 @@
+const { DataTypes } = require('sequelize');
 
-const Sequelize = require('sequelize');
-const database = require('cd ../config/db.js');
-
-const Pessoas = database.define('Pessoas', {
-
-  idPessoas: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-
-  nomeSobrenome: {
-    type: DataTypes.STRING(100),
-    allowNull: false
-  },
-
-  Telefone: {
-    type: DataTypes.STRING(15),
-    allowNull: false
-  },
-
-  Senha: {
-    type: DataTypes.STRING(10),
-    allowNull: false
-  },
-
-  Status: {
-    type: DataTypes.ENUM('ativo', 'inativo'),
-    allowNull: false,
-    defaultValue: 'ativo'
-  },
-
-  datacadastro: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-
-  dataAlteracao: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-
-  idEndereco: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'Endereco', // nome da tabela referenciada
-      key: 'idEndereco'
+module.exports = (sequelize) => {
+  const Pessoa = sequelize.define('Pessoa', {
+    idPessoas: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
     },
-    onUpdate: 'CASCADE',
-    onDelete: 'SET NULL'
-  }
+    nomeSobrenome: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    Telefone: {
+      type: DataTypes.STRING(25),
+      allowNull: true
+    },
+    Senha: {
+      type: DataTypes.STRING(60),
+      allowNull: false
+    },
+    Status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
+    email: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true
+    },
+    idEndereço: { 
+      type: DataTypes.INTEGER,
+      allowNull: true 
+    }
+  }, {
+    tableName: 'Pessoas',
+    timestamps: true,
+    createdAt: 'datacadastro',
+    updatedAt: 'dataAlteracao'
+  });
 
-}, {
-  tableName: 'Pessoas',
-  timestamps: false // já tem campos de data no banco, então desativa os automáticos
-});
+  Pessoa.associate = (models) => {
+    Pessoa.belongsTo(models.Endereco, {
+      foreignKey: 'idEndereço',
+      as: 'endereco',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    });
+  };
 
-module.exports = Pessoas;
+  return Pessoa;
+};
