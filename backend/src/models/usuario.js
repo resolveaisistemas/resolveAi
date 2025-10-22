@@ -50,5 +50,18 @@ const Usuario = database.define('Usuario', {
   timestamps: false
 });
 
+Usuario.associate = (models) => {
+  Usuario.belongsTo(models.Cliente, {
+    foreignKey: 'idCliente',
+    targetKey: 'idCliente',
+    as: 'cliente'
+  });
+  Usuario.belongsTo(models.Prestador, {
+    foreignKey: 'idPrestador',
+    targetKey: 'idPrestador',
+    as: 'prestador'
+  });
+}
+
 module.exports = Usuario;
 
