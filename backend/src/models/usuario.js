@@ -1,33 +1,15 @@
-const Sequelize = require('sequelize');
-const database = require('cd ../config/db.js');
+const { Sequelize, DataTypes } = require('sequelize');
+const database = require('../config/db.js');
 
 const Usuario = database.define('Usuario', {
-
+  
   idUsuario: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true
   },
 
-  idCliente: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'Cliente',
-      key: 'idCliente'
-    },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
-  },
-
-  idPrestador: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'Prestador',
-      key: 'idPrestador'
-    },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
-  },
+  // Não precisa criar idCliente e idPrestador, a associação belongsTo (foreignKey) faz isso automaticamente
 
   login: {
     type: DataTypes.STRING(255),
@@ -61,13 +43,16 @@ Usuario.associate = (models) => {
     foreignKey: 'idCliente',
     targetKey: 'idCliente',
     as: 'cliente'
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   });
   Usuario.belongsTo(models.Prestador, {
     foreignKey: 'idPrestador',
     targetKey: 'idPrestador',
     as: 'prestador'
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   });
 }
 
 module.exports = Usuario;
-
