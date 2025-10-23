@@ -1,0 +1,153 @@
+CREATE DATABASE ProjetoResolveAi;
+
+USE ProjetoResolveAi;
+
+-- Tabela Pessoas
+CREATE TABLE Pessoas (
+    idPessoas INT AUTO_INCREMENT PRIMARY KEY,
+    nomeSobrenome VARCHAR(200) NOT NULL,
+    Telefone VARCHAR(15) NOT NULL,
+    Senha VARCHAR(10) NOT NULL,
+    Status bool,
+    email varchar (80) not null,
+    datacadastro TIMESTAMP,
+    dataAlteracao TIMESTAMP,
+    idEndereco INT,
+	CPF_CNPJ VARCHAR(18) NOT NULL,
+    constraint fk_Endereco
+    FOREIGN KEY (idEndereco) 
+    REFERENCES Endereco(idEndereco)
+    -- apelido FK Constraint apelido
+);
+
+-- Tabela Cliente
+CREATE TABLE Cliente (
+    idCliente INT AUTO_INCREMENT PRIMARY KEY,
+    dataNascimento DATE NOT NULL,
+    idPessoas INT,
+    Status bool,
+    constraint fk_Pessoas
+    FOREIGN KEY (idPessoas) 
+    REFERENCES Pessoas(idPessoas)
+);
+
+-- Tabela Prestador
+CREATE TABLE Prestador (
+    idPrestador INT AUTO_INCREMENT PRIMARY KEY,
+    idTipoServico INT,
+    idPessoas INT,
+    percentualCobrado DECIMAL(5, 2) NOT NULL,
+    Status bool,
+	constraint fk_PessoasPrestador
+    FOREIGN KEY (idPessoas) 
+    REFERENCES Pessoas(idPessoas)
+);
+
+-- Tabela Usuário
+CREATE TABLE Usuario (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    idCliente INT ,
+    idPrestador INT,
+    login VARCHAR(255) NOT NULL,
+    senha VARCHAR(60) NOT NULL,
+    status bool,
+	constraint fk_Cliente
+    FOREIGN KEY (idCliente) 
+    REFERENCES Cliente(idCliente),
+	constraint fk_Prestador
+    FOREIGN KEY (idPrestador) 
+    REFERENCES Prestador(idPrestador)
+);
+
+-- Tabela Agendamento
+CREATE TABLE Agendamento (
+    idAgendamento INT AUTO_INCREMENT PRIMARY KEY,
+    idSolicitacao INT not null,
+    idPrestador INT not null,
+    dataAgendada DATE NOT NULL,
+    horarioAgendado TIME NOT NULL,
+    status bool,
+	constraint fk_PrestadorAgendamento
+    FOREIGN KEY (idPrestador) 
+    REFERENCES Prestador(idPrestador)
+);
+
+-- Tabela Pagamento
+CREATE TABLE Pagamento (
+    idPagamento INT AUTO_INCREMENT PRIMARY KEY,
+    idCliente INT not null,
+    idPrestador INT not null,
+    idServico INT not null,
+    metodoPagamento int  NOT NULL,
+    ValorPago DECIMAL(10, 2) NOT NULL,
+    dataPagamento TIMESTAMP,
+    status int not null,
+	constraint fk_ClientePagamento
+    FOREIGN KEY (idCliente) 
+    REFERENCES Cliente(idCliente),
+	constraint fk_PrestadorPagamento
+    FOREIGN KEY (idPrestador) 
+    REFERENCES Prestador(idPrestador)
+);
+
+-- Tabela Avaliação
+CREATE TABLE Avaliacao (
+    idAvaliacao INT AUTO_INCREMENT PRIMARY KEY,
+    idAgendamento INT not null,
+    nota INT not null,
+    dataAvaliacao TIMESTAMP,
+    Descricao varchar (1000) not null,
+	constraint fk_Agendamento
+    FOREIGN KEY (idAgendamento) REFERENCES Agendamento(idAgendamento)
+);
+
+-- Tabela Endereco
+CREATE TABLE Endereco (
+    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+    logradouro VARCHAR(255) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(255),
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    cep VARCHAR(10) NOT NULL
+);
+
+-- Tabela Tipos de Serviço
+CREATE TABLE TiposServico (
+    idtiposServico INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
+);
+
+-- Tabela Serviço
+CREATE TABLE Servico (
+    idServico INT AUTO_INCREMENT PRIMARY KEY,
+    idPrestador INT not null,
+    idtiposServico INT not null,
+    descricao VARCHAR(1000) NOT NULL,
+	constraint fk_PrestadorServico
+    FOREIGN KEY (idPrestador) 
+    REFERENCES Prestador(idPrestador),
+	constraint fk_tiposServico
+    FOREIGN KEY (idtiposServico) REFERENCES TiposServico(idtiposServico)
+);
+
+-- Tabela Solicitações
+CREATE TABLE Solicitacoes (
+    idSolicitacoes INT AUTO_INCREMENT PRIMARY KEY,
+    idCliente INT not null,
+    idtiposServico INT not null,
+    idEndereco INT not null,
+    descricaoProblema varchar(1000) not null,
+    dataSolicitacao TIMESTAMP,
+    status bool,
+	constraint fk_ClienteSolicitacoes
+    FOREIGN KEY (idCliente) 
+    REFERENCES Cliente(idCliente),
+	constraint fk_tiposServicoSolicitacoes
+    FOREIGN KEY (idtiposServico) 
+    REFERENCES TiposServico(idtiposServico),
+     constraint fk_EnderecoSolicitacoes
+    FOREIGN KEY (idEndereco) REFERENCES Endereco(idEndereco)
+);
+
