@@ -48,6 +48,13 @@ module.exports = (sequelize) => {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
     });
+    Usuario.belongsTo(models.Cliente, {
+      foreignKey: 'idCliente ',
+      targetKey: 'idCliente ',
+      as: 'cliente',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    });
   };
 
   return Pessoa;
