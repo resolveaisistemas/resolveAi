@@ -1,64 +1,48 @@
-const Sequelize = require('sequelize');
-const database = require('cd ../config/db.js');
+const { DataTypes } = require('sequelize');
 
-const Prestador = database.define('Pagamento', {
-
-
-const Prestador = database.define('Prestador', {
+module.exports = (sequelize) => {
+  const Prestador = sequelize.define('Prestador', {
     idPrestador: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
     },
-
-   CNPJ: {
-       type: sequelize.STRING(11),
-       allowNull: false,
-},
-
-idTipoServico: {
-       type: sequelize.INTEGER
-},
-
-idPessoas: {
-        type: sequelize.INTEGER
-},
-
-percentualCobrado: {
-        type: sequelize.DECIMAL(5, 2),
-        allowNull: false;
-},
-
-  idPessoas: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: 'Pessoas',
-      key: 'idPessoas',
+    idTipoServico: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'  // ajustado para um valor válido
-  },
-
-  login: {
-    type: Sequelize.STRING(255), //  STRING
-    allowNull: false,
-  },
-
-  senha: {
-    type: Sequelize.STRING(255),
-    allowNull: false,
-  },
-
-  status: {
-    type: Sequelize.ENUM('Ativo', 'Inativo'), //  valores que você definiu, outro dá erro.
-    allowNull: false,
-    defaultValue: 'Ativo',
-  },
-
-}), {
-  tableName: 'Prestador',
-  timestamps: false
+    idPessoas: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    percentualCobrado: {
+      type: DataTypes.STRING(60),
+      allowNull: false
+    }
+  }, {
+    tableName: 'Usuario',
+    timestamps: false,
+    createdAt: 'datacadastro',
+    updatedAt: 'dataAlteracao'
 });
 
-module.exports = Prestador;
+  Usuario.associate = (models) => {
+    Usuario.belongsTo(models.Cliente, {
+      foreignKey: 'idCliente',
+      targetKey: 'idCliente',
+      as: 'cliente',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    });
+    Usuario.belongsTo(models.Prestador, {
+      foreignKey: 'idPrestador',
+      targetKey: 'idPrestador',
+      as: 'prestador',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    });
+  };
 
+  return Usuario;
+};
