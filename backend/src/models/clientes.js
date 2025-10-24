@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: true 
     },
-    Status: {
+    status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
@@ -28,22 +28,15 @@ module.exports = (sequelize) => {
     updatedAt: 'dataAlteracao'
 });
 
-  Usuario.associate = (models) => {
-    Usuario.belongsTo(models.Pessoas, {
+  Clientes.associate = (models) => {
+    Clientes.belongsTo(models.Pessoas, {
       foreignKey: 'idPessoa',
       targetKey: 'idPessoa',
       as: 'pessoa',
       onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
-    });
-    Usuario.belongsTo(models.Usuario, {
-      foreignKey: 'idCliente ',
-      targetKey: 'idCliente ',
-      as: 'cliente',
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
+      onDelete: 'SET NULL'
     });
   };
 
-  return Cliente;
+  return Clientes;
 };
