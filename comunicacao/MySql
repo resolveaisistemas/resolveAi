@@ -81,6 +81,8 @@ CREATE TABLE Pagamento (
     metodoPagamento int  NOT NULL,
     ValorPago DECIMAL(10, 2) NOT NULL,
     dataPagamento TIMESTAMP,
+    valorRepasse decimal (10,2) not null, -- prestador valor pago - percentual 
+    dataRepasse timestamp, -- prestador 
     status int not null,
 	constraint fk_ClientePagamento
     FOREIGN KEY (idCliente) 
@@ -89,6 +91,9 @@ CREATE TABLE Pagamento (
     FOREIGN KEY (idPrestador) 
     REFERENCES Prestador(idPrestador)
 );
+
+
+
 
 -- Tabela Avaliação
 CREATE TABLE Avaliacao (
@@ -122,14 +127,18 @@ CREATE TABLE TiposServico (
 -- Tabela Serviço
 CREATE TABLE Servico (
     idServico INT AUTO_INCREMENT PRIMARY KEY,
-    idPrestador INT not null,
-    idtiposServico INT not null,
     descricao VARCHAR(1000) NOT NULL,
-	constraint fk_PrestadorServico
-    FOREIGN KEY (idPrestador) 
-    REFERENCES Prestador(idPrestador),
-	constraint fk_tiposServico
-    FOREIGN KEY (idtiposServico) REFERENCES TiposServico(idtiposServico)
+    idPrestadortiposServico int Not Null,
+    constraint fk_idPrestadortiposServico
+    FOREIGN KEY (idPrestadortiposServico)
+    REFERENCES PrestadortiposServico(idPrestadortiposServico)
+);
+
+-- Tabela Prestador Tipo Serviços
+Create table PrestadortiposServico(
+idPrestadortiposServico  INT AUTO_INCREMENT PRIMARY KEY,
+idPrestador int,
+idtiposServico int
 );
 
 -- Tabela Solicitações
@@ -150,4 +159,3 @@ CREATE TABLE Solicitacoes (
      constraint fk_EnderecoSolicitacoes
     FOREIGN KEY (idEndereco) REFERENCES Endereco(idEndereco)
 );
-
