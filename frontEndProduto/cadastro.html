@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastre-se na plataforma Resolve Aí como Cliente ou Prestador de Serviços">
+    <title>Cadastro - Resolve Aí</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <a href="index.html" class="auth-logo">
+                    <i class="fas fa-tools"></i>
+                    <span>Resolve Aí</span>
+                </a>
+                <h1 class="auth-title">Crie sua conta</h1>
+                <p class="auth-subtitle">Junte-se a milhares de usuários satisfeitos</p>
+            </div>
+
+            <div class="social-login-grid" style="margin-bottom: 1.5rem;">
+                <button type="button" class="btn btn--outline btn--centered">
+                    <i class="fab fa-google"></i>
+                    Google
+                </button>
+                <button type="button" class="btn btn--outline btn--centered">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook
+                </button>
+            </div>
+            <div class="form-divider">
+                <span class="form-divider-text">Ou cadastre-se com e-mail</span>
+                <div class="form-divider-line"></div>
+            </div>
+
+            <form class="auth-form" id="cadastro-form" novalidate>
+                
+                <div class="form-group">
+                    <label for="cadastro-nome" class="form-label">
+                        <i class="fas fa-user"></i> Nome Completo
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-nome" 
+                        class="form-input" 
+                        placeholder="João da Silva"
+                        required
+                        autocomplete="name"
+                        minlength="3"
+                    >
+                    <span class="form-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cadastro-email" class="form-label">
+                        <i class="fas fa-envelope"></i> E-mail
+                    </label>
+                    <input 
+                        type="email" 
+                        id="cadastro-email" 
+                        class="form-input" 
+                        placeholder="seu@email.com"
+                        required
+                        autocomplete="email"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-password" class="form-label">
+                        <i class="fas fa-lock"></i> Senha
+                    </label>
+                    <div class="password-toggle">
+                        <input 
+                            type="password" 
+                            id="cadastro-password" 
+                            class="form-input" 
+                            placeholder="Mínimo 6 caracteres"
+                            required
+                            autocomplete="new-password"
+                            minlength="6"
+                        >
+                        <button type="button" class="password-toggle-btn" aria-label="Mostrar senha">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-confirm-password" class="form-label">
+                        <i class="fas fa-lock"></i> Confirmar Senha
+                    </label>
+                    <div class="password-toggle">
+                        <input 
+                            type="password" 
+                            id="cadastro-confirm-password" 
+                            class="form-input" 
+                            placeholder="Digite a senha novamente"
+                            required
+                            autocomplete="new-password"
+                        >
+                        <button type="button" class="password-toggle-btn" aria-label="Mostrar senha">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-tipo" class="form-label">
+                        <i class="fas fa-user-tag"></i> Tipo de Conta
+                    </label>
+                    <select 
+                        id="cadastro-tipo" 
+                        class="form-select" 
+                        required
+                    >
+                        <option value="">Selecione o tipo de conta</option>
+                        <option value="cliente">Cliente - Preciso contratar serviços</option>
+                        <option value="prestador">Prestador - Quero oferecer meus serviços</option>
+                    </select>
+                    <span class="form-error"></span>
+                </div>
+
+                <div id="campos-prestador">
+                    <label class="form-label">Serviços que você oferece:</label>
+                    <div class="servicos-group">
+                        <div class="servico-item">
+                            <input type="checkbox" id="serv-hidraulica" name="servicos[]" value="hidraulica">
+                            <label for="serv-hidraulica">Hidráulica</label>
+                        </div>
+                        <div class="servico-item">
+                            <input type="checkbox" id="serv-eletrica" name="servicos[]" value="eletrica">
+                            <label for="serv-eletrica">Elétrica</label>
+                        </div>
+                        <div class="servico-item">
+                            <input type="checkbox" id="serv-reparos" name="servicos[]" value="reparos">
+                            <label for="serv-reparos">Pequenos Reparos</label>
+                        </div>
+                        <div class="servico-item">
+                            <input type="checkbox" id="serv-jardinagem" name="servicos[]" value="jardinagem">
+                            <label for="serv-jardinagem">Jardinagem</label>
+                        </div>
+                    </div>
+                    <span class="form-error" id="servicos-error"></span>
+                </div>
+
+                <div class="mt-medium">
+                    <label class="form-checkbox-label">
+                        <input type="checkbox" id="terms" required class="form-checkbox">
+                        <span class="form-checkbox-text">
+                            Eu concordo com os 
+                            <a href="termos-de-uso.html" class="form-link">Termos de Uso</a> 
+                            e a 
+                            <a href="politica-de-privacidade.html" class="form-link">Política de Privacidade</a>
+                        </span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--large btn--full-width mt-medium">
+                    <i class="fas fa-user-plus"></i>
+                    Criar Conta
+                </button>
+            </form>
+            
+            <div class="form-footer">
+                Já tem uma conta? 
+                <a href="login.html" class="form-link">Faça login</a>
+            </div>
+
+            <div class="auth-back-link">
+                <a href="index.html" class="form-link form-link-sm">
+                    <i class="fas fa-arrow-left"></i> Voltar para a página inicial
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

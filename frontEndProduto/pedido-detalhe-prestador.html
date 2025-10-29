@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Pedido - Resolve Aí</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="main-app-content">
+        <header class="dashboard-header">
+            <div class="container">
+                <h1>Detalhes do Pedido</h1>
+                <p class="subtitle">Analise o problema e envie seu orçamento para o cliente.</p>
+            </div>
+        </header>
+
+        <div class="main section">
+            <div class="container" style="max-width: 900px; display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                
+                <div class="pedido-detalhes">
+                    <h2 class="section__title" style="text-align: left;">Conserto de vazamento na pia da cozinha</h2>
+                    
+                    <div class="info-group" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--text-light);">Categoria:</h4>
+                        <p style="font-weight: var(--font-medium);">Hidráulica</p>
+                    </div>
+                    <div class="info-group" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--text-light);">Endereço:</h4>
+                        <p style="font-weight: var(--font-medium);">Bairro Vila Mariana (Endereço completo será liberado após o aceite)</p>
+                    </div>
+                    <div class="info-group" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--text-light);">Descrição do Cliente:</h4>
+                        <p>"Estou com um vazamento constante debaixo da pia. Já fechei o registro, mas continua pingando e molhando o armário todo. Preciso de ajuda urgente."</p>
+                    </div>
+                    <div class="info-group" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--text-light);">Fotos Enviadas:</h4>
+                        <img src="img/vazamento-exemplo.jpg" alt="Foto do vazamento" style="width: 200px; border-radius: var(--border-radius-md); margin-top: 0.5rem;">
+                    </div>
+                </div>
+
+                <aside class="auth-container" style="padding: 2rem; margin-top: 0;">
+                    <h3 class="auth-title" style="font-size: 1.5rem;">Enviar Orçamento</h3>
+                    <form id="orcamento-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="valor" class="form-label">Valor do Orçamento (R$)</label>
+                            <input type="number" id="valor" class="form-input" placeholder="Ex: 150.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem" class="form-label">Mensagem (Opcional)</label>
+                            <textarea id="mensagem" class="form-input" rows="4" placeholder="Ex: Olá! Posso resolver isso hoje à tarde."></textarea>
+                        </div>
+                        
+                        <div class="comissao-info" style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--border-radius-sm); font-size: var(--small-font-size); margin-top: 1rem;">
+                            <p style="display: flex; justify-content: space-between;"><span>Taxa da Plataforma (10%)</span> <span id="taxa-valor">- R$ 0,00</span></p>
+                            <p style="display: flex; justify-content: space-between; font-weight: var(--font-bold); margin-top: 0.5rem;"><span>Você Receberá</span> <span id="receber-valor">R$ 0,00</span></p>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full-width mt-medium">
+                            <i class="fas fa-paper-plane"></i> Enviar Orçamento
+                        </button>
+                    </form>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('valor').addEventListener('input', function(e) {
+            const valor = parseFloat(e.target.value) || 0;
+            const taxa = valor * 0.10; // 10% de comissão
+            const recebido = valor - taxa;
+            document.getElementById('taxa-valor').textContent = `- R$ ${taxa.toFixed(2)}`;
+            document.getElementById('receber-valor').textContent = `R$ ${recebido.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html> 

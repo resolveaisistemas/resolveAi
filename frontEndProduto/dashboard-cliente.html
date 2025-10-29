@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel - Resolve Aí</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    </head>
+<body>
+
+    <header class="header app-header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <i class="fas fa-tools"></i>
+                <span>Resolva Aí </span>
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="dashboard-cliente.html" class="nav__link">Meu Painel</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="meus-pedidos-cliente.html" class="nav__link">Meus Pedidos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="faq.html" class="nav__link">Ajuda</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav__buttons">
+                <a href="perfil.html" class="btn btn--ghost">
+                    <i class="fas fa-user-circle"></i> Meu Perfil
+                </a>
+                <a href="index.html" class="btn btn--primary"> <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-app-content">
+
+        <header class="dashboard-header">
+            <div class="container">
+                <h1>Olá, [Nome do Cliente]!</h1>
+                <p class="subtitle">Bem-vindo(a) de volta ao seu painel.</p>
+            </div>
+        </header>
+
+        <div class="main section">
+            <div class="container">
+            
+                <div class="dashboard-cta">
+                    <p>Precisa resolver um problema em casa?</p>
+                    <a href="solicitar-servico.html" class="btn btn--large">
+                        <i class="fas fa-plus-circle"></i>
+                        Solicitar Novo Serviço
+                    </a>
+                </div>
+
+                <h2 class="section__title" style="text-align: left; margin-top: 4rem;">Meus Pedidos Recentes</h2>
+                
+                <div class="pedidos-lista">
+                    
+                    <article class="pedido-card">
+                        <div class="pedido-card-info">
+                            <h4>Conserto de vazamento na pia</h4>
+                            <span>Pedido em 20/10/2025 - <strong>Hidráulica</strong></span>
+                        </div>
+                        <div class="pedido-status status-concluido">
+                            <i class="fas fa-check-circle"></i> Concluído
+                        </div>
+                    </article>
+
+                    <article class="pedido-card">
+                        <div class="pedido-card-info">
+                            <h4>Instalação de tomada nova</h4>
+                            <span>Pedido em 22/10/2025 - <strong>Elétrica</strong></span>
+                        </div>
+                        <div class="pedido-status status-pendente">
+                            <i class="fas fa-clock"></i> Aguardando Orçamentos
+                        </div>
+                    </article>
+                    
+                    <a href="meus-pedidos-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver todos os pedidos</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+         </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

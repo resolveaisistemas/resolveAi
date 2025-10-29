@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Seguro - Resolve Aí</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page"> <main class="main-app-content">
+        <div class="auth-container" style="margin-top: 3rem; max-width: 600px;">
+            <div class="auth-header">
+                <h1 class="auth-title">Pagamento Seguro</h1>
+                <p class="auth-subtitle">Seu pagamento ficará retido até a conclusão do serviço.</p>
+            </div>
+            
+            <div class="resumo-pedido" style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--border-radius-md); margin-bottom: 1.5rem;">
+                <p style="display: flex; justify-content: space-between;"><span>Serviço:</span> <strong>Instalação de tomada</strong></p>
+                <p style="display: flex; justify-content: space-between;"><span>Profissional:</span> <strong>João P. (Eletricista)</strong></p>
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1rem 0;">
+                <p style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: var(--font-bold);">
+                    <span>Valor Total:</span> 
+                    <span style="color: var(--primary-color);">R$ 180,00</span>
+                </p>
+            </div>
+
+            <form id="payment-form" class="auth-form">
+                <div class="form-group">
+                    <label for="card-name" class="form-label">Nome no Cartão</label>
+                    <input type="text" id="card-name" class="form-input" placeholder="JOAO P DA SILVA" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number" class="form-label">Número do Cartão</label>
+                    <input type="text" id="card-number" class="form-input" placeholder="0000 0000 0000 0000" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="card-expiry" class="form-label">Validade</label>
+                        <input type="text" id="card-expiry" class="form-input" placeholder="MM/AA" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-cvv" class="form-label">CVV</label>
+                        <input type="text" id="card-cvv" class="form-input" placeholder="123" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--full-width btn--large mt-medium">
+                    <i class="fas fa-lock"></i> Pagar R$ 180,00 e Agendar
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

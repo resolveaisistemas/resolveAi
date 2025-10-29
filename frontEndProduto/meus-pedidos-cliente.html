@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos - Resolve Aí</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="main-app-content">
+        <header class="dashboard-header">
+            <div class="container">
+                <h1>Meus Pedidos</h1>
+                <p class="subtitle">Acompanhe o status dos seus serviços solicitados.</p>
+            </div>
+        </header>
+
+        <div class="main section">
+            <div class="container">
+                <a href="solicitar-servico.html" class="btn btn--primary" style="margin-bottom: 2rem;">
+                    <i class="fas fa-plus-circle"></i> Solicitar Novo Serviço
+                </a>
+                
+                <div class="pedidos-lista">
+                    
+                    <article class="pedido-card">
+                        <div class="pedido-card-info">
+                            <h4>Instalação de tomada nova</h4>
+                            <span>Pedido em 22/10/2025 - <strong>Elétrica</strong></span>
+                        </div>
+                        <div class="pedido-status status-pendente">
+                            <i class="fas fa-clock"></i> 2 Orçamentos Recebidos
+                        </div>
+                        <a href="pedido-detalhe-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver Orçamentos</a>
+                    </article>
+
+                    <article class="pedido-card">
+                        <div class="pedido-card-info">
+                            <h4>Montagem de estante</h4>
+                            <span>Pedido em 21/10/2025 - <strong>Pequenos Reparos</strong></span>
+                        </div>
+                        <div class="pedido-status status-pendente" style="background-color: var(--accent-color); color: white;">
+                            <i class="fas fa-credit-card"></i> Aguardando Pagamento
+                        </div>
+                        <a href="pagamento.html" class="btn btn--accent" style="margin-top: 1rem;">Pagar Agora (R$ 120,00)</a>
+                    </article>
+
+                    <article class="pedido-card">
+                        <div class="pedido-card-info">
+                            <h4>Corte de grama</h4>
+                            <span>Pedido em 20/10/2025 - <strong>Jardinagem</strong></span>
+                        </div>
+                        <div class="pedido-status status-pendente" style="background-color: var(--primary-light); color: white;">
+                            <i class="fas fa-tools"></i> Em Andamento
+                        </div>
+                        <a href="pedido-detalhe-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver Detalhes</a>
+                    </article>
+
+                    <article class="pedido-card">
+                        <div class="pedido-card-info">
+                            <h4>Conserto de vazamento na pia</h4>
+                            <span>Pedido em 18/10/2025 - <strong>Hidráulica</strong></span>
+                        </div>
+                        <div class="pedido-status status-concluido">
+                            <i class="fas fa-check-circle"></i> Concluído
+                        </div>
+                        <a href="#" class="btn btn--outline" style="margin-top: 1rem;">Avaliar Serviço</a>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

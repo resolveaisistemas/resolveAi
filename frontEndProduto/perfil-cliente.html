@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Resolve Aí</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header app-header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <i class="fas fa-tools"></i>
+                <span>Resolva Aí </span>
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="dashboard-cliente.html" class="nav__link">Meu Painel</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="meus-pedidos-cliente.html" class="nav__link">Meus Pedidos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="faq.html" class="nav__link">Ajuda</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav__buttons">
+                <a href="perfil-cliente.html" class="btn btn--ghost">
+                    <i class="fas fa-user-circle"></i> Meu Perfil
+                </a>
+                <a href="index.html" class="btn btn--primary"> <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-app-content">
+
+        <header class="dashboard-header">
+            <div class="container">
+                <h1>Meu Perfil</h1>
+                <p class="subtitle">Mantenha seus dados cadastrais atualizados.</p>
+            </div>
+        </header>
+
+        <div class="auth-container" style="max-width: 700px; margin: 3rem auto;">
+            
+            <form id="perfil-form" class="auth-form">
+                
+                <div class="form-group">
+                    <label for="perfil-nome" class="form-label">Nome Completo</label>
+                    <input type="text" id="perfil-nome" class="form-input" value="[Nome do Cliente]" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="perfil-email" class="form-label">E-mail</label>
+                    <input type="email" id="perfil-email" class="form-input" value="[email@cliente.com]" disabled>
+                    <span class="form-checkbox-text">O e-mail não pode ser alterado.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="perfil-telefone" class="form-label">Telefone (WhatsApp)</label>
+                    <input type="tel" id="perfil-telefone" class="form-input" value="[Telefone do Cliente]">
+                </div>
+
+                <div class="form-group">
+                    <label for="perfil-endereco" class="form-label">Endereço Principal</label>
+                    <input type="text" id="perfil-endereco" class="form-input" value="[Endereço do Cliente]">
+                </div>
+
+                <div class="form-divider">
+                    <span class="form-divider-text">Alterar Senha</span>
+                    <div class="form-divider-line"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="perfil-senha-atual" class="form-label">Senha Atual</label>
+                    <input type="password" id="perfil-senha-atual" class="form-input" placeholder="Deixe em branco para não alterar">
+                </div>
+                
+                <div class="form-group">
+                    <label for="perfil-senha-nova" class="form-label">Nova Senha</label>
+                    <input type="password" id="perfil-senha-nova" class="form-input" placeholder="Mínimo 6 caracteres">
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--large btn--full-width mt-medium">
+                    <i class="fas fa-save"></i>
+                    Salvar Alterações
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+         </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

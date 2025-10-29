@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Dicas para sua Casa - Resolve Aí</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Adicione ao style.css */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .article-card { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; transition: var(--transition); }
+        .article-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-5px); }
+        .article-card img { width: 100%; height: 200px; object-fit: cover; }
+        .article-card-content { padding: 1.5rem; }
+        .article-card-content h3 { font-size: 1.25rem; }
+        .article-card-content p { color: var(--text-light); margin: 0.5rem 0 1rem; }
+    </style>
+</head>
+<body>
+
+    <main class="main-app-content">
+        <header class="hero-simple">
+            <div class="container">
+                <h1 class="hero__title">Blog Resolve Aí</h1>
+                <p class="hero__description">Dicas e tutoriais para cuidar da sua casa com segurança.</p>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="container">
+                <div class="blog-grid">
+                    
+                    <article class="article-card">
+                        <img src="img/blog-fios.jpg" alt="Fios elétricos">
+                        <div class="article-card-content">
+                            <span class="service__link">Elétrica</span>
+                            <h3>5 Sinais de que sua Fiação Elétrica está Velha</h3>
+                            <p>Cheiro de queimado e disjuntores caindo? Pode ser a hora de...</p>
+                            <a href="artigo.html" class="btn btn--outline">Ler Mais</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="img/blog-vazamento.jpg" alt="Vazamento pia">
+                        <div class="article-card-content">
+                            <span class="service__link">Hidráulica</span>
+                            <h3>Como Identificar um Vazamento Oculto na Parede</h3>
+                            <p>Manchas na parede e conta de água alta? Saiba o que fazer...</p>
+                            <a href="artigo.html" class="btn btn--outline">Ler Mais</a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <img src="img/blog-jardim.jpg" alt="Jardim bonito">
+                        <div class="article-card-content">
+                            <span class="service__link">Jardinagem</span>
+                            <h3>Qual a melhor época para podar suas plantas?</h3>
+                            <p>Mantenha seu jardim saudável o ano todo com estas dicas...</p>
+                            <a href="artigo.html" class="btn btn--outline">Ler Mais</a>
+                        </div>
+                    </article>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
