@@ -1,10 +1,34 @@
-CREATE DATABASE ProjetoResolveAi;
+Banco de Dados Atualizado
+CREATE DATABASE ResolveAi;
+drop database ResolveAi;
 
-USE ProjetoResolveAi;
+USE ResolveAi;
 
--- Tabela Pessoas
-CREATE TABLE Pessoas (
-    idPessoas INT AUTO_INCREMENT PRIMARY KEY,
+-- 1 Tabela Clientes
+
+CREATE TABLE Clientes (
+    idCliente INT AUTO_INCREMENT PRIMARY KEY,
+	nomeSobrenome VARCHAR(200) NOT NULL,
+    Telefone VARCHAR(15) NOT NULL,
+    Senha VARCHAR(10) NOT NULL,
+    Status bool,
+    email varchar (80) not null,
+    datacadastro TIMESTAMP,
+    dataAlteracao TIMESTAMP,
+	CPF_CNPJ VARCHAR(18) NOT NULL,
+    dataNascimento DATE NOT NULL,
+	logradouro VARCHAR(255) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(255),
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    cep VARCHAR(10) NOT NULL
+    );
+    
+    -- 2 Tabela Prestadores
+CREATE TABLE Prestador (
+    idPrestador INT AUTO_INCREMENT PRIMARY KEY,
     nomeSobrenome VARCHAR(200) NOT NULL,
     Telefone VARCHAR(15) NOT NULL,
     Senha VARCHAR(10) NOT NULL,
@@ -12,69 +36,77 @@ CREATE TABLE Pessoas (
     email varchar (80) not null,
     datacadastro TIMESTAMP,
     dataAlteracao TIMESTAMP,
-    idEndereco INT,
 	CPF_CNPJ VARCHAR(18) NOT NULL,
-    constraint fk_Endereco
-    FOREIGN KEY (idEndereco) 
-    REFERENCES Endereco(idEndereco)
-    -- apelido FK Constraint apelido
-);
-
--- Tabela Cliente
-CREATE TABLE Cliente (
-    idCliente INT AUTO_INCREMENT PRIMARY KEY,
     dataNascimento DATE NOT NULL,
-    idPessoas INT,
-    Status bool,
-    constraint fk_Pessoas
-    FOREIGN KEY (idPessoas) 
-    REFERENCES Pessoas(idPessoas)
-);
-
--- Tabela Prestador
-CREATE TABLE Prestador (
-    idPrestador INT AUTO_INCREMENT PRIMARY KEY,
-    idTipoServico INT,
-    idPessoas INT,
+	logradouro VARCHAR(255) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    complemento VARCHAR(255),
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
     percentualCobrado DECIMAL(5, 2) NOT NULL,
-    Status bool,
-	constraint fk_PessoasPrestador
-    FOREIGN KEY (idPessoas) 
-    REFERENCES Pessoas(idPessoas)
+	idTiposServico INT,
+	constraint fk_TiposServico
+    FOREIGN KEY (idTiposServico) 
+    REFERENCES TiposServico(idTiposServico)
 );
-
--- Tabela Usuário
-CREATE TABLE Usuario (
+       
+       -- 3 Tabela Usuário
+CREATE TABLE Usuarios (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     idCliente INT ,
     idPrestador INT,
-    login VARCHAR(255) NOT NULL,
-    senha VARCHAR(60) NOT NULL,
-    status bool,
-	constraint fk_Cliente
-    FOREIGN KEY (idCliente) 
-    REFERENCES Cliente(idCliente),
-	constraint fk_Prestador
-    FOREIGN KEY (idPrestador) 
-    REFERENCES Prestador(idPrestador)
+    login VARCHAR(150) NOT NULL,
+    senha VARCHAR(30) NOT NULL,
+    status bool
 );
 
--- Tabela Agendamento
-CREATE TABLE Agendamento (
-    idAgendamento INT AUTO_INCREMENT PRIMARY KEY,
-    idSolicitacao INT not null,
-    idPrestador INT not null,
-    dataAgendada DATE NOT NULL,
-    horarioAgendado TIME NOT NULL,
-    status bool,
-	constraint fk_PrestadorAgendamento
-    FOREIGN KEY (idPrestador) 
-    REFERENCES Prestador(idPrestador)
+-- 4 Tabela Ordem de serviço 
+CREATE TABLE OrdemServico (
+    idOrdemServico INT AUTO_INCREMENT PRIMARY KEY,
+    dataAtendimento DATE NOT NULL,
+    horarioAtendimento TIME NOT NULL,
+    status bool, -- executado ou não
+	idPrestador INT not null,
+	idCliente INT not null,
+    Constraint fk_idPrestador
+    FOREIGN KEY (idPrestador)
+    REFERENCES Prestador(idPrestador),
+	Constraint fk_idCliente
+    FOREIGN KEY (idCliente)
+    REFERENCES Clientes(idCliente)
+
+);
+-- 5 Tabela Ordem  itens de Serviço
+    Create table OrdemItensServico (
+    idOrdemItensServico int auto_increment primary key,
+    idServico int not null,
+    idTiposServico int not null,
+    Constraint fk_idServico
+    FOREIGN KEY (idServico)
+    REFERENCES Servicos(idServico),
+	Constraint fk_idTiposServico
+    FOREIGN KEY (idTiposServico)
+    REFERENCES TiposServico(idTiposServico)
+    );
+
+-- 6 Tabela Tipos de Serviço
+CREATE TABLE TiposServico (
+    idtiposServico INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
 );
 
--- Tabela Pagamento
-CREATE TABLE Pagamento (
-    idPagamento INT AUTO_INCREMENT PRIMARY KEY,
+-- 7 Tabela Serviço
+CREATE TABLE Servicos (
+    idServico INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(1000) NOT NULL,
+	idOrdemItensServico int Not Null
+);
+
+-- 8 Tabela Pagamentos
+CREATE TABLE Pagamentos (
+    idPagamentos INT AUTO_INCREMENT PRIMARY KEY,
     idCliente INT not null,
     idPrestador INT not null,
     idServico INT not null,
@@ -84,78 +116,16 @@ CREATE TABLE Pagamento (
     valorRepasse decimal (10,2) not null, -- prestador valor pago - percentual 
     dataRepasse timestamp, -- prestador 
     status int not null,
-	constraint fk_ClientePagamento
+    constraint fk_ClientePagamento
     FOREIGN KEY (idCliente) 
-    REFERENCES Cliente(idCliente),
+    REFERENCES Clientes(idCliente),
 	constraint fk_PrestadorPagamento
     FOREIGN KEY (idPrestador) 
-    REFERENCES Prestador(idPrestador)
+    REFERENCES Prestador(idPrestador),
+    constraint fk_idServicos
+    FOREIGN KEY (idServico) 
+    REFERENCES Servicos(idServico)
 );
 
 
-
-
--- Tabela Avaliação
-CREATE TABLE Avaliacao (
-    idAvaliacao INT AUTO_INCREMENT PRIMARY KEY,
-    idAgendamento INT not null,
-    nota INT not null,
-    dataAvaliacao TIMESTAMP,
-    Descricao varchar (1000) not null,
-	constraint fk_Agendamento
-    FOREIGN KEY (idAgendamento) REFERENCES Agendamento(idAgendamento)
-);
-
--- Tabela Endereco
-CREATE TABLE Endereco (
-    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
-    logradouro VARCHAR(255) NOT NULL,
-    numero VARCHAR(10) NOT NULL,
-    complemento VARCHAR(255),
-    bairro VARCHAR(100) NOT NULL,
-    cidade VARCHAR(100) NOT NULL,
-    estado VARCHAR(2) NOT NULL,
-    cep VARCHAR(10) NOT NULL
-);
-
--- Tabela Tipos de Serviço
-CREATE TABLE TiposServico (
-    idtiposServico INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(50) NOT NULL
-);
-
--- Tabela Serviço
-CREATE TABLE Servico (
-    idServico INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(1000) NOT NULL,
-    idPrestadortiposServico int Not Null,
-    constraint fk_idPrestadortiposServico
-    FOREIGN KEY (idPrestadortiposServico)
-    REFERENCES PrestadortiposServico(idPrestadortiposServico)
-);
-
--- Tabela Prestador Tipo Serviços
-Create table PrestadortiposServico(
-idPrestadortiposServico  INT AUTO_INCREMENT PRIMARY KEY,
-idPrestador int,
-idtiposServico int
-);
-
--- Tabela Solicitações
-CREATE TABLE Solicitacoes (
-    idSolicitacoes INT AUTO_INCREMENT PRIMARY KEY,
-    idCliente INT not null,
-    idtiposServico INT not null,
-    idEndereco INT not null,
-    descricaoProblema varchar(1000) not null,
-    dataSolicitacao TIMESTAMP,
-    status bool,
-	constraint fk_ClienteSolicitacoes
-    FOREIGN KEY (idCliente) 
-    REFERENCES Cliente(idCliente),
-	constraint fk_tiposServicoSolicitacoes
-    FOREIGN KEY (idtiposServico) 
-    REFERENCES TiposServico(idtiposServico),
-     constraint fk_EnderecoSolicitacoes
-    FOREIGN KEY (idEndereco) REFERENCES Endereco(idEndereco)
-);
+ 
