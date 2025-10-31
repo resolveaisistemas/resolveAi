@@ -1,4 +1,4 @@
-Banco de Dados Atualizado
+Banco de Dados Atualizado  
 CREATE DATABASE ResolveAi;
 drop database ResolveAi;
 
