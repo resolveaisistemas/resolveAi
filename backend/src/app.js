@@ -65,12 +65,7 @@ async function inicianrSequelize() {
         res.json({ mensagem: "Página não encontrada" });
       });
 
-      app.get("/blog", (req, res) => {
-        res.json({ mensagem: " Exibição de coleções de itens do blog do Resolve AI Sistemas" });
-      });
-
-
-    app.listen(3000, () => {
+   app.listen(3000, () => {
       console.log("Servidor rodando na porta 3000");
     });
   } catch (error) {
