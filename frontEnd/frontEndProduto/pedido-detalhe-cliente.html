@@ -1,28 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Pedido - Resolve Aí</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         /* Estilos do Card de Orçamento (Adicione ao style.css) */
         .orcamento-card {
-            background: var(--bg-color); border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-md); padding: 1.5rem;
-            margin-bottom: 1rem; box-shadow: var(--shadow-sm);
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
         }
-        .orcamento-card:hover { border-color: var(--primary-color); }
-        .orcamento-header { display: flex; align-items: center; gap: 1rem; }
-        .orcamento-header img { width: 4rem; height: 4rem; border-radius: 50%; }
-        .orcamento-header h4 { margin-bottom: 0; }
-        .orcamento-body { margin: 1rem 0; font-style: italic; color: var(--text-light); }
-        .orcamento-footer { display: flex; justify-content: space-between; align-items: center; }
-        .orcamento-valor { font-size: 1.5rem; font-weight: var(--font-bold); color: var(--primary-color); }
+
+        .orcamento-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .orcamento-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .orcamento-header img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+        }
+
+        .orcamento-header h4 {
+            margin-bottom: 0;
+        }
+
+        .orcamento-body {
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .orcamento-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .orcamento-valor {
+            font-size: 1.5rem;
+            font-weight: var(--font-bold);
+            color: var(--primary-color);
+        }
     </style>
 </head>
+
+<header class="header app-header" id="header">
+    <nav class="nav container">
+        <a href="index.html" class="nav__logo">
+            <i class="fas fa-tools"></i>
+            <span>Resolva Aí </span>
+        </a>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="dashboard-cliente.html" class="nav__link">Meu Painel</a>
+                </li>
+                <li class="nav__item">
+                    <a href="meus-pedidos-cliente.html" class="nav__link">Meus Pedidos</a>
+                </li>
+                <li class="nav__item">
+                    <a href="faq.html" class="nav__link">Ajuda</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav__buttons">
+            <a href="perfil-cliente.html" class="btn btn--ghost">
+                <i class="fas fa-user-circle"></i> Meu Perfil
+            </a>
+            <a href="index.html" class="btn btn--primary"> <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
 <body>
 
     <main class="main-app-content">
@@ -35,25 +104,32 @@
 
         <div class="main section">
             <div class="container" style="max-width: 900px; display: grid; grid-template-columns: 1fr; gap: 2rem;">
-                
-                <div class="pedido-info" style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--border-radius-lg);">
-                    <h3 class="section__title" style="text-align: left; font-size: 1.5rem;">Seu Pedido: Instalação de tomada nova</h3>
-                    <p><strong>Descrição:</strong> "Preciso instalar uma tomada 220v nova na parede da cozinha para um forno elétrico."</p>
-                    <p><strong>Status:</strong> <span class="pedido-status status-pendente" style="margin: 0; padding: 0.25rem 0.5rem;"><i class="fas fa-clock"></i> 2 Orçamentos Recebidos</span></p>
+
+                <div class="pedido-info"
+                    style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--border-radius-lg);">
+                    <h3 class="section__title" style="text-align: left; font-size: 1.5rem;">Seu Pedido: Instalação de
+                        tomada nova</h3>
+                    <p><strong>Descrição:</strong> "Preciso instalar uma tomada 220v nova na parede da cozinha para um
+                        forno elétrico."</p>
+                    <p><strong>Status:</strong> <span class="pedido-status status-pendente"
+                            style="margin: 0; padding: 0.25rem 0.5rem;"><i class="fas fa-clock"></i> 2 Orçamentos
+                            Recebidos</span></p>
                 </div>
 
                 <div class="orcamentos-lista">
                     <h3 class="section__title" style="text-align: left; font-size: 1.5rem;">Orçamentos Recebidos</h3>
-                    
+
                     <article class="orcamento-card">
                         <div class="orcamento-header">
                             <img src="img/foto-prestador-joao.jpg" alt="Foto João">
                             <div>
                                 <h4>João P. (Eletricista)</h4>
-                                <span><i class="fas fa-star" style="color: var(--accent-color);"></i> 4.8 Estrelas (32 serviços)</span>
+                                <span><i class="fas fa-star" style="color: var(--accent-color);"></i> 4.8 Estrelas (32
+                                    serviços)</span>
                             </div>
                         </div>
-                        <p class="orcamento-body">"Olá! Faço o serviço completo, incluindo passagem de fiação e instalação da tomada. Posso ir amanhã."</p>
+                        <p class="orcamento-body">"Olá! Faço o serviço completo, incluindo passagem de fiação e
+                            instalação da tomada. Posso ir amanhã."</p>
                         <div class="orcamento-footer">
                             <span class="orcamento-valor">R$ 180,00</span>
                             <a href="pagamento.html" class="btn btn--primary">
@@ -67,7 +143,8 @@
                             <img src="img/foto-prestador-maria.jpg" alt="Foto Maria">
                             <div>
                                 <h4>Maria S. (Eletricista)</h4>
-                                <span><i class="fas fa-star" style="color: var(--accent-color);"></i> 4.9 Estrelas (45 serviços)</span>
+                                <span><i class="fas fa-star" style="color: var(--accent-color);"></i> 4.9 Estrelas (45
+                                    serviços)</span>
                             </div>
                         </div>
                         <p class="orcamento-body">"Serviço rápido e com garantia. Disponibilidade imediata."</p>
@@ -83,10 +160,11 @@
             </div>
         </div>
     </main>
-    
+
     <footer class="footer">
-        </footer>
-    
+    </footer>
+
     <script src="script.js"></script>
 </body>
+
 </html>

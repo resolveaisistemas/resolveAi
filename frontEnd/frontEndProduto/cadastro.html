@@ -26,20 +26,6 @@
                 <p class="auth-subtitle">Junte-se a milhares de usuários satisfeitos</p>
             </div>
 
-            <div class="social-login-grid" style="margin-bottom: 1.5rem;">
-                <button type="button" class="btn btn--outline btn--centered">
-                    <i class="fab fa-google"></i>
-                    Google
-                </button>
-                <button type="button" class="btn btn--outline btn--centered">
-                    <i class="fab fa-facebook-f"></i>
-                    Facebook
-                </button>
-            </div>
-            <div class="form-divider">
-                <span class="form-divider-text">Ou cadastre-se com e-mail</span>
-                <div class="form-divider-line"></div>
-            </div>
 
             <form class="auth-form" id="cadastro-form" novalidate>
                 
@@ -71,6 +57,180 @@
                         required
                         autocomplete="email"
                     >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-telefone" class="form-label">
+                        <i class="fas fa-phone"></i> Telefone
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="cadastro-telefone" 
+                        class="form-input" 
+                        placeholder="(XX) 9XXXX-XXXX"
+                        required
+                        autocomplete="tel"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-cpf" class="form-label">
+                        <i class="fas fa-id-card"></i> CPF
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-cpf" 
+                        class="form-input" 
+                        placeholder="000.000.000-00"
+                        required
+                    >
+                    <span class="form-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cadastro-nascimento" class="form-label">
+                        <i class="fas fa-calendar-alt"></i> Data de Nascimento
+                    </label>
+                    <input 
+                        type="date" 
+                        id="cadastro-nascimento" 
+                        class="form-input" 
+                        required
+                        autocomplete="bday"
+                    >
+                    <span class="form-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cadastro-cep" class="form-label">
+                        <i class="fas fa-map-marker-alt"></i> CEP
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-cep" 
+                        class="form-input" 
+                        placeholder="00000-000"
+                        required
+                        autocomplete="postal-code"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-logradouro" class="form-label">
+                        <i class="fas fa-road"></i> Logradouro
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-logradouro" 
+                        class="form-input" 
+                        placeholder="Rua, Avenida, etc."
+                        required
+                        autocomplete="address-line1"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-numero" class="form-label">
+                        <i class="fas fa-hashtag"></i> Número
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-numero" 
+                        class="form-input" 
+                        placeholder="123"
+                        required
+                        autocomplete="address-line2"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-complemento" class="form-label">
+                        <i class="fas fa-info-circle"></i> Complemento
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-complemento" 
+                        class="form-input" 
+                        placeholder="Apto, Bloco, Casa (Opcional)"
+                        autocomplete="address-line3"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-bairro" class="form-label">
+                        <i class="fas fa-map-pin"></i> Bairro
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-bairro" 
+                        class="form-input" 
+                        placeholder="Seu bairro"
+                        required
+                        autocomplete="address-level2"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-cidade" class="form-label">
+                        <i class="fas fa-city"></i> Cidade
+                    </label>
+                    <input 
+                        type="text" 
+                        id="cadastro-cidade" 
+                        class="form-input" 
+                        placeholder="Sua cidade"
+                        required
+                        autocomplete="address-level1"
+                    >
+                    <span class="form-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cadastro-estado" class="form-label">
+                        <i class="fas fa-map"></i> Estado
+                    </label>
+                    <select 
+                        id="cadastro-estado" 
+                        class="form-select" 
+                        required
+                        autocomplete="address-level1"
+                    >
+                        <option value="">Selecione o Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
                     <span class="form-error"></span>
                 </div>
 
@@ -132,6 +292,19 @@
                 </div>
 
                 <div id="campos-prestador">
+                    <div class="form-group">
+                        <label for="cadastro-cnpj" class="form-label">
+                            <i class="fas fa-building"></i> CNPJ (Opcional)
+                        </label>
+                        <input 
+                            type="text" 
+                            id="cadastro-cnpj" 
+                            class="form-input" 
+                            placeholder="00.000.000/0001-00"
+                        >
+                        <span class="form-error"></span>
+                    </div>
+
                     <label class="form-label">Serviços que você oferece:</label>
                     <div class="servicos-group">
                         <div class="servico-item">
@@ -142,15 +315,7 @@
                             <input type="checkbox" id="serv-eletrica" name="servicos[]" value="eletrica">
                             <label for="serv-eletrica">Elétrica</label>
                         </div>
-                        <div class="servico-item">
-                            <input type="checkbox" id="serv-reparos" name="servicos[]" value="reparos">
-                            <label for="serv-reparos">Pequenos Reparos</label>
                         </div>
-                        <div class="servico-item">
-                            <input type="checkbox" id="serv-jardinagem" name="servicos[]" value="jardinagem">
-                            <label for="serv-jardinagem">Jardinagem</label>
-                        </div>
-                    </div>
                     <span class="form-error" id="servicos-error"></span>
                 </div>
 

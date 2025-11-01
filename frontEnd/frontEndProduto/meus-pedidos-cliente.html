@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Pedidos - Resolve Aí</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
+<header class="header app-header" id="header">
+    <nav class="nav container">
+        <a href="index.html" class="nav__logo">
+            <i class="fas fa-tools"></i>
+            <span>Resolva Aí </span>
+        </a>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="dashboard-cliente.html" class="nav__link">Meu Painel</a>
+                </li>
+                <li class="nav__item">
+                    <a href="meus-pedidos-cliente.html" class="nav__link">Meus Pedidos</a>
+                </li>
+                <li class="nav__item">
+                    <a href="faq.html" class="nav__link">Ajuda</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav__buttons">
+            <a href="perfil-cliente.html" class="btn btn--ghost">
+                <i class="fas fa-user-circle"></i> Meu Perfil
+            </a>
+            <a href="index.html" class="btn btn--primary"> <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
 <body>
 
     <main class="main-app-content">
@@ -23,9 +58,9 @@
                 <a href="solicitar-servico.html" class="btn btn--primary" style="margin-bottom: 2rem;">
                     <i class="fas fa-plus-circle"></i> Solicitar Novo Serviço
                 </a>
-                
+
                 <div class="pedidos-lista">
-                    
+
                     <article class="pedido-card">
                         <div class="pedido-card-info">
                             <h4>Instalação de tomada nova</h4>
@@ -34,7 +69,8 @@
                         <div class="pedido-status status-pendente">
                             <i class="fas fa-clock"></i> 2 Orçamentos Recebidos
                         </div>
-                        <a href="pedido-detalhe-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver Orçamentos</a>
+                        <a href="pedido-detalhe-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver
+                            Orçamentos</a>
                     </article>
 
                     <article class="pedido-card">
@@ -42,10 +78,12 @@
                             <h4>Montagem de estante</h4>
                             <span>Pedido em 21/10/2025 - <strong>Pequenos Reparos</strong></span>
                         </div>
-                        <div class="pedido-status status-pendente" style="background-color: var(--accent-color); color: white;">
+                        <div class="pedido-status status-pendente"
+                            style="background-color: var(--accent-color); color: white;">
                             <i class="fas fa-credit-card"></i> Aguardando Pagamento
                         </div>
-                        <a href="pagamento.html" class="btn btn--accent" style="margin-top: 1rem;">Pagar Agora (R$ 120,00)</a>
+                        <a href="pagamento.html" class="btn btn--accent" style="margin-top: 1rem;">Pagar Agora (R$
+                            120,00)</a>
                     </article>
 
                     <article class="pedido-card">
@@ -53,10 +91,12 @@
                             <h4>Corte de grama</h4>
                             <span>Pedido em 20/10/2025 - <strong>Jardinagem</strong></span>
                         </div>
-                        <div class="pedido-status status-pendente" style="background-color: var(--primary-light); color: white;">
+                        <div class="pedido-status status-pendente"
+                            style="background-color: var(--primary-light); color: white;">
                             <i class="fas fa-tools"></i> Em Andamento
                         </div>
-                        <a href="pedido-detalhe-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver Detalhes</a>
+                        <a href="pedido-detalhe-cliente.html" class="btn btn--outline" style="margin-top: 1rem;">Ver
+                            Detalhes</a>
                     </article>
 
                     <article class="pedido-card">
@@ -74,10 +114,11 @@
             </div>
         </div>
     </main>
-    
+
     <footer class="footer">
-        </footer>
-    
+    </footer>
+
     <script src="script.js"></script>
 </body>
+
 </html>
