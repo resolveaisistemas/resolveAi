@@ -1,14 +1,12 @@
-Banco de Dados Atualizado  
-CREATE DATABASE ResolveAi;
-drop database ResolveAi;
 
+CREATE DATABASE ResolveAi;
 USE ResolveAi;
 
 -- 1 Tabela Clientes
 
 CREATE TABLE Clientes (
     idCliente INT AUTO_INCREMENT PRIMARY KEY,
-	nomeSobrenome VARCHAR(200) NOT NULL,
+    nomeSobrenome VARCHAR(200) NOT NULL,
     Telefone VARCHAR(15) NOT NULL,
     Senha VARCHAR(10) NOT NULL,
     Status bool,
@@ -55,18 +53,19 @@ CREATE TABLE Prestador (
        -- 3 Tabela Usuário
 CREATE TABLE Usuarios (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
-    idCliente INT ,
-    idPrestador INT,
+    idCliente INT not null,
+    idPrestador INT not null,
     login VARCHAR(150) NOT NULL,
     senha VARCHAR(30) NOT NULL,
     status bool
 );
 
--- 4 Tabela Ordem de serviço 
+-- 4 Tabela Ordem de serviço -- Agendamento/solicitação 
 CREATE TABLE OrdemServico (
     idOrdemServico INT AUTO_INCREMENT PRIMARY KEY,
     dataAtendimento DATE NOT NULL,
     horarioAtendimento TIME NOT NULL,
+    valorTotal decimal(10,2) not null,
     status bool, -- executado ou não
 	idPrestador INT not null,
 	idCliente INT not null,
@@ -75,33 +74,34 @@ CREATE TABLE OrdemServico (
     REFERENCES Prestador(idPrestador),
 	Constraint fk_idCliente
     FOREIGN KEY (idCliente)
-    REFERENCES Clientes(idCliente)
+    REFERENCES Clientes(idCliente) -- acrescentar serviço /tiposserviços
 
 );
 -- 5 Tabela Ordem  itens de Serviço
     Create table OrdemItensServico (
     idOrdemItensServico int auto_increment primary key,
     idServico int not null,
-    idTiposServico int not null,
+    ValorServico decimal(10,2) not null,
+    quantidade int not null,
+    valorTotal decimal(10,2) not null,
     Constraint fk_idServico
     FOREIGN KEY (idServico)
-    REFERENCES Servicos(idServico),
-	Constraint fk_idTiposServico
-    FOREIGN KEY (idTiposServico)
-    REFERENCES TiposServico(idTiposServico)
+    REFERENCES Servicos(idServico)
     );
 
--- 6 Tabela Tipos de Serviço
+-- 6 Tabela Tipos de Serviço -- Hidraúlica ou Elétrica 
 CREATE TABLE TiposServico (
     idtiposServico INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(50) NOT NULL
 );
 
--- 7 Tabela Serviço
+-- 7 Tabela Serviço -- O que vai ser exceutado encanador troca torneira
 CREATE TABLE Servicos (
     idServico INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(1000) NOT NULL,
-	idOrdemItensServico int Not Null
+	idtiposServico int Not Null,
+    valorServico decimal(10,2) NOT NULL
+    
 );
 
 -- 8 Tabela Pagamentos
@@ -126,6 +126,7 @@ CREATE TABLE Pagamentos (
     FOREIGN KEY (idServico) 
     REFERENCES Servicos(idServico)
 );
+
 
 
  
